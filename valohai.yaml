@@ -1,0 +1,18 @@
+---
+
+- step:
+    #name: Execute python train.py
+    name: Train model
+    image: tensorflow/tensorflow:1.15.0-gpu-py3
+    command: python train.py {parameters}
+    inputs:
+      - name: mnist
+        default: https://s3.amazonaws.com/img-datasets/mnist.npz
+    parameters:
+     - name: epochs
+       description: Steps to run
+       type: integer
+       default: 5
+     - name: learning_rate
+       type: float
+       default: 0.001
